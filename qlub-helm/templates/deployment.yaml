@@ -1,21 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "django-app.fullname" . }}
+  #name: {{ include "django-app.fullname" . }}
+  name: {{ .Values.name }}
   namespace: {{ .Release.Namespace }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "django-app.name" . }}
+      #app: {{ include "django-app.name" . }}
+      app: {{ .Values.name }}
   template:
     metadata:
       labels:
-        app: {{ include "django-app.name" . }}
+        #app: {{ include "django-app.name" . }}
+        app: {{ .Values.name }}
     spec:
       serviceAccountName: {{ .Values.serviceAccount.name }}
       containers:
-        - name: django
+        - name: {{ .Values.containerName }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
