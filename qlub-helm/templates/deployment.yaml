@@ -1,20 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  #name: {{ include "django-app.fullname" . }}
-  name: {{ .Values.name }}
+  name: {{ include "django-app.fullname" . }}
   namespace: {{ .Release.Namespace }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      #app: {{ include "django-app.name" . }}
-      app: {{ .Values.name }}
+      app: {{ include "django-app.name" . }}
   template:
     metadata:
       labels:
-        #app: {{ include "django-app.name" . }}
-        app: {{ .Values.name }}
+        app: {{ include "django-app.name" . }}
     spec:
       serviceAccountName: {{ .Values.serviceAccount.name }}
       containers:

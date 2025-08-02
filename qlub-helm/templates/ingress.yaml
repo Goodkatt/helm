@@ -2,8 +2,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  #name: {{ include "django-app.fullname" . }}-ingress
-  name: {{ .Values.name }}-ingress
+  name: {{ include "django-app.fullname" . }}-ingress
   namespace: {{ .Release.Namespace }}
   annotations:
 {{ toYaml .Values.ingress.annotations | indent 4 }}
@@ -17,8 +16,7 @@ spec:
             pathType: {{ .pathType }}
             backend:
               service:
-                #name: {{ include "django-app.fullname" $ }}
-                name: {{ .Values.name }}
+                name: {{ include "django-app.fullname" $ }}
                 port:
                   number: {{ $.Values.service.port }}
 {{- end }}
