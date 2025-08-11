@@ -2,7 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "django-app.fullname" . }}
-  namespace: {{ .Release.Namespace }}
+  #namespace: {{ .Release.Namespace }}
+  namespace: {{ .Values.namespace }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:

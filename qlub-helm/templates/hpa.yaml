@@ -3,7 +3,8 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: {{ include "django-app.fullname" . }}
-  namespace: {{ .Release.Namespace }}
+  #namespace: {{ .Release.Namespace }}
+  namespace: {{ .Values.namespace }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
