@@ -28,7 +28,7 @@ ingress:
       pathType: Prefix
 hpa:
   enabled: true
-  minReplicas: 3
+  minReplicas: 1
   maxReplicas: 5
   targetCPUUtilizationPercentage: 15
 resources:
